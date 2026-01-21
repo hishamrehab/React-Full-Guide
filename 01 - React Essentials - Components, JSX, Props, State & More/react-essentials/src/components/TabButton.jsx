@@ -1,8 +1,5 @@
-import React from 'react'
-
 const TabButton = ({children , onSelect }) => {
-      
-
+  console.log("TAB BUTTON COMPONENT RENDING");
   return (
     <li>
         <button onClick={onSelect}>

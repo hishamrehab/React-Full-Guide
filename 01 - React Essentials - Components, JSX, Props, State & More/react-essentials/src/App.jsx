@@ -1,12 +1,20 @@
+import { useState } from "react";
 import { CORE_CONCEPTS } from './data';
 import Header from './components/header/Header';
 import CoreConcept from './components/CoreConcept';
 import TabButton from './components/TabButton';
 
+
 function App() {
-  function handleSelect() {
-    console.log('Hello World - selected!');
-  }
+  const [selectedTopic, setSelectedTopic] = useState('components');
+ 
+  
+    function handleSelect(selectedButton) {
+    setSelectedTopic(selectedButton);
+    console.log("Selected Topic:", selectedTopic);
+    } 
+ 
+  console.log("APP COMPONENT RENDERED");
 
   return (
     <div>
@@ -31,7 +39,6 @@ function App() {
            <CoreConcept 
            {...CORE_CONCEPTS[2]}
           />   
-
            <CoreConcept 
            {...CORE_CONCEPTS[3]}
           />   
@@ -39,19 +46,22 @@ function App() {
         <section id='examples'>
           <h2>Examples</h2>
           <menu>
-              <TabButton onSelect={handleSelect}>
+              <TabButton onSelect={
+                () =>handleSelect('components')
+              }>
                 Components
               </TabButton>
-              <TabButton >
-                Props & State
+               <TabButton onSelect={() => handleSelect('jsx')}>
+                JSX
               </TabButton>
-              <TabButton >
-                Context
+              <TabButton onSelect={() => handleSelect('props')}>
+                Props
               </TabButton>
-              <TabButton>
-                Redux
-                </TabButton>
+              <TabButton onSelect={() => handleSelect('state')}>
+                State
+              </TabButton>
           </menu>
+          {selectedTopic}
         </section>
       </main>
     </div>
