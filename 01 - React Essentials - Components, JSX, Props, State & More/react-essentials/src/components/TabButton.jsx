@@ -1,8 +1,10 @@
-const TabButton = ({children , onSelect }) => {
+const TabButton = ({children , onSelect , isSelected }) => {
   console.log("TAB BUTTON COMPONENT RENDING");
   return (
     <li>
-        <button onClick={onSelect}>
+        <button 
+        className={isSelected ? "active" : ""}
+        onClick={onSelect}>
             {children}
         </button>
     </li>
